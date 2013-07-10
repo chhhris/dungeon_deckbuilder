@@ -43,14 +43,15 @@ class DecksController < ApplicationController
     @deck = Deck.new()
     @deck.name = params[:deck][:name]
 
-    @deck.description = deck[:description]
+    @deck.description = params[:deck][:description]
 
     params[:cards].each do |card|
-      card = Card.new
-      card[:name] = card.name
-      card[:strength] = card.strength
+      # card = Card.new
+      # card[:name] = card.name
+      # card[:strength] = card.strength
 
-      @deck.cards << card
+      # @deck.cards << card
+      @deck.cards.build(card)
     end
 
     if @deck.save
@@ -87,4 +88,6 @@ class DecksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 end

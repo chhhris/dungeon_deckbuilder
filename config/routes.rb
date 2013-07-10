@@ -1,9 +1,9 @@
 DeckBuilder::Application.routes.draw do
   resources :cards
 
-
   resources :decks
 
+  root :to => 'decks#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

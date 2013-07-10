@@ -11,5 +11,16 @@
 </p>
 
 
+<ul>
+  <% @deck.cards.each do |card| %>
+    <li>
+      Card Name: <b><%= card.name %></b><br/>
+      Card Strength: <b><%= card.strength %></b> 
+    </li>
+    <% end %>
+</ul>
+
+
+
 <%= link_to 'Edit', edit_deck_path(@deck) %> |
 <%= link_to 'Back', decks_path %>

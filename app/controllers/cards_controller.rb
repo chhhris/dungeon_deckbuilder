@@ -11,10 +11,11 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new
-    @card.name = params[:card][:name]
+    @card = Card.new(params[:card])
+    # @card = Card.new
+    # @card.name = params[:card][:name]
 
-    @card.deck = Deck.find(params[:deck_id])
+    # @card.deck = Deck.find(params[:deck_id])
 
     if @card.save
       redirect_to @card, notice: 'Card was successfully created.'

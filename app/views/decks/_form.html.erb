@@ -1,25 +1,24 @@
-<%= form_for(@deck) do |f| %>
-  <% if @deck.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@deck.errors.count, "error") %> prohibited this deck from being saved:</h2>
+<%= form_tag decks_path do %>
 
-      <ul>
-      <% @deck.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  <%= label_tag 'deck[name]', "Deck Name" %>
+  <%= text_field_tag 'deck[name]', @deck.name %><br/>
+
+  <%= label_tag 'deck[description]', "Deck Description" %>
+  <%= text_field_tag 'deck[description]' %><br/>
+  <% 2.times do %>
+    <fieldset>
+      
+      <%= label_tag 'cards[][name]', "Card Name" %>
+      <%= text_field_tag 'cards[][name]' %><br/>
+      
+      <%= label_tag 'cards[][strength]', "Card Strength" %>
+      <%= number_field_tag 'cards[][strength]' %><br/> 
+    
+    </fieldset>
   <% end %>
+  <%= submit_tag "Create Deck" %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
+
+
+<!-- add default values if form is not filled in correctly -->

@@ -4,7 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
-    <th></th>
+    <th>Cards</th>
     <th></th>
     <th></th>
   </tr>
@@ -13,6 +13,17 @@
   <tr>
     <td><%= deck.name %></td>
     <td><%= deck.description %></td>
+    <td>
+      <ul>
+        <% deck.cards.each do |card| %>
+          <li>
+            Card Name: <b><%= card.name %></b><br/>
+            Card Strength: <b><%= card.strength %></b> 
+          </li>
+          <% end %>
+      </ul>
+    </td>
+
     <td><%= link_to 'Show', deck %></td>
     <td><%= link_to 'Edit', edit_deck_path(deck) %></td>
     <td><%= link_to 'Destroy', deck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
